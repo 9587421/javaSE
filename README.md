@@ -1,13 +1,15 @@
 # javaSE
 总结javaSE阶段知识点及对应demo（自用）
 
+（如果你是大一大二学生，看到此文档可以用作课程阶段学习，如果你大三大四了，就别学了，Java就是个坑。火速去学go，python，云原生。ps：2024.7.29）
+
 git操作
 
 找到一个你想要保存的文件夹位置
 
 在cmd中输入
 
-git clone https://github.com/9587421/javaSE.git
+git clone https://github.com/9587421/javaSE-JavaEE.git
 
 即可获取本文档。
 
@@ -91,3 +93,11 @@ git练习
 ​	学完JavaSE后我对Java有什么理解？
 
 ## Java基础
+
+程序：人通过编程语言给机器下达的指令的集合
+
+编程语言：java是其中之一 从机器识别的角度分两类： 
+
+ 1、编译、解释型：java   c    c#    c++ python等 需要先 编译   在执行时边解释边执行
+
+ 2、解释型：html   javascript 机器能够直接识别，无需编译
