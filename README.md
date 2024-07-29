@@ -1,7 +1,27 @@
 # javaSE
 总结javaSE阶段知识点及对应demo（自用）
 
+git操作
 
+找到一个你想要保存的文件夹位置
+
+在cmd中输入
+
+git clone https://github.com/9587421/javaSE.git
+
+即可获取本文档。
+
+需要下载配置git后进行此操作
+
+[Git的安装与使用教程（超详细！！！）_git.exe安装教程-CSDN博客](https://blog.csdn.net/weixin_44950987/article/details/102619708)
+
+git使用教程
+
+[Git文件管理：Git提交_git 提交-CSDN博客](https://blog.csdn.net/mzgxinhua/article/details/135095373)
+
+git练习
+
+[Learn Git Branching](https://learngitbranching.js.org/?nodemo=&locale=zh_CN)
 
 ## 一、Java概述
 
