@@ -39,6 +39,8 @@ git练习
 
 如果有多个jdk版本，可以在环境变量中设置多个jdk的变量，需要时手动配置根目录用作替换。
 
+[Java详细安装配置教程(Windows)，从下载到配置——Java-1.8(jdk)安装_jre1.8-CSDN博客](https://blog.csdn.net/weixin_45710060/article/details/123315280)
+
 #### 3.为什么要配置系统环境变量
 
 环境变量一般是指在操作系统中用来指定操作系统运行环境的一些参数，如临时文件夹位置和系统文件夹位置等。
@@ -50,6 +52,8 @@ git练习
 ### 2.开发工具IDE的选择
 
 看个人爱好，我使用了eclipse和idea编写程序，hbuilder X、记事本、vs code、来作为查看代码的工具。
+
+[idea 2024 中文最新版破解激活永久（图文详细讲解教程）超级简单（亲测可用）_idea永久激活-CSDN博客](https://blog.csdn.net/qq_54621492/article/details/139903580)
 
 ### 3.Java的特点，为什么学习Java
 
@@ -74,6 +78,8 @@ git练习
 #### Java基础学习路线
 
 ​	JavaSE→JavaEE→Spring→Spring boot→Spring cloud
+
+[人类高质量 Java 学习路线【一条龙版】 - 程序员鱼皮 - 博客园 (cnblogs.com)](https://www.cnblogs.com/yupi/p/15166218.html)
 
 #### Java SE vs Java EE
 
