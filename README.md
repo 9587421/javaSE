@@ -104,6 +104,197 @@ git练习
 
 编程语言：java是其中之一 从机器识别的角度分两类： 
 
- 1、编译、解释型：java   c    c#    c++ python等 需要先 编译   在执行时边解释边执行
+​	 1、编译、解释型：java   c    c#    c++ python等 需要先 编译   在执行时边解释边执行
 
- 2、解释型：html   javascript 机器能够直接识别，无需编译
+​	 2、解释型：html   javascript 机器能够直接识别，无需编译
+
+问题：java程序的代码，人认识，但是机器不认识，程序员编写的代码，如何让机器能够认识、执行？ 
+
+机器：只认识 有电、断电 两种状态  使用二进制 0  1 来表示
+
+java程序的执行过程： 
+
+​	1、编写java程序--- 程序员通过java语言把指令编写在.java文件中
+
+​	2、编译java程序--- 相当于翻译官，把程序员认识的.java程序“翻译”成机器能够识别的.class程序 使用Jdk里面的javac.exe编译器来编译、翻译 
+
+​	3、执行.class程序---最终执行的是.class程序 使用jvm来执行.class文件 如何编译、执行的java程序呢？ 只要安装jdk即可。 
+
+​	概念：jdk  java  开发 工具 jdk:  编译器、调试工具、jre   
+
+​	jre:  java运行环境，里面包含，java运行时需要的资源库、jvm  
+
+​	jvm: java  virtual  mation java虚拟机 用来执行java程序
+
+#### 第一个Java程序
+
+[IntelliJ IDEA 如何创建一个 Java 项目_idea创建java项目-CSDN博客](https://blog.csdn.net/promsing/article/details/111225674)
+
+直接在ide中运行即可，无需使用记事本与cmd编译运行。（有打火机为什么还要钻木取火？先学会生火再学习原理，第一个升起火的人可不懂燃点是什么。）
+
+```Java
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello world!");
+    }
+}
+```
+
+### Java基础语法
+
+[Java 基础语法 | 菜鸟教程 (runoob.com)](https://www.runoob.com/java/java-basic-syntax.html)
+
+#### 1.关键字
+
+[【基础篇】Java关键字（超详细）-CSDN博客](https://blog.csdn.net/weixin_43608968/article/details/133978103)
+
+Java中的关键字指的是系统已经占用并且赋予其意义的单词。
+
+就好比1+1=2这个定理一样，1的含义就是1，+的含义就是将两个数字在算术运算过程中相加。
+
+你不能为1赋予新涵义，否则在规则完善的算术运算中无法正确进行运算。
+
+#### 2.标识符
+
+抛开被系统占用的关键字，我们在编程过程中可以自己定义一些自己使用的关键字-标识符。
+
+对于标识符的命名，你可以在规则范围内随意命名，就好像你在编写一篇作文一样。但是想要写好作文，也要遵守一定的规范。
+
+JavaApplication（以这个标识符为例子，多个英文单词组合表达他是做什么用的，每个单词使用首字母大写进行单词间的区分。）
+
+[Java 变量命名规则 | 菜鸟教程 (runoob.com)](https://www.runoob.com/java/java-variable-naming-rules.html)
+
+#### 3.数据类型
+
+[Java 基本数据类型 | 菜鸟教程 (runoob.com)](https://www.runoob.com/java/java-basic-datatypes.html#:~:text=本网页介绍了 Java 语言的八种内置数据类型，包括整数、浮点数、字符和布尔类型，以及它们的存储空间、默认值和取值范围。还提供了一个实例，展示了如何使用包装类的常量来查看数据类型的相关信息。)
+
+数据类型是用来修饰约束你定义的标识符的关键字。
+
+数据类型可以分为两类：基本数据类型和引用数据类型。
+
+基本数据类型有八个，引用数据类型则有很多个日后在学习的过程中可以慢慢积累。
+
+但基本数据类型必须记住。
+
+byte
+
+short
+
+int
+
+long
+
+使用：byte/short/int/long   a=1;
+
+以上四个用于定义整数
+
+float
+
+double
+
+使用：float/double a=1.1;
+
+以上两个用于定义小数
+
+char
+
+使用：char a= ‘男’;
+
+用于定单引号括起来的单个字符，有且仅有一个字符
+
+原理：每一个字符在java中都使用一个十进制的数值来表示  这种字符和数值的对应关系成为ASCII码 每一个汉字以及其他语言的文字，也有一个对应的数值，是unicode  包含着ASCII码 Unicode  称为万国码   支持所有语言的文字 java的底层就使用Unicode。
+
+boolean
+
+自己了解去吧。
+
+引用数据类型
+
+String
+
+String 字符串，是双引号括起来的若干个字符 0到多个 
+
+String  str=""; 
+
+String str="a";  
+
+String str2="abc张王李赵"; 
+
+String str3="100"
+
+#### 4.变量与常量
+
+在编写程序过程中我们所定义的每个标识符都可以被称作变量。
+
+就好比我们在解方程过程中定义的x与y，常量就好比π=3.14一样。
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+        int num=1;
+        int num2=num;
+        System.out.println(num2);//此时num2=1
+        num=3;
+        num2=num;
+        System.out.println(num2);//此时num2=3
+    }
+}
+```
+
+#### 5.Java类与程序结构
+
+java程序的结构：外层class   内层main方法
+
+```java
+public class Main {
+    public static void main(String[] args) {
+
+    }
+}
+```
+
+程序的规范：注意缩进每一层都要区分， {}也是。
+
+#### 6.Java运算符与修饰符
+
+[Java 运算符 | 菜鸟教程 (runoob.com)](https://www.runoob.com/java/java-operators.html)
+
+[Java 修饰符 | 菜鸟教程 (runoob.com)](https://www.runoob.com/java/java-modifier-types.html)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
