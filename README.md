@@ -262,23 +262,59 @@ public class Main {
 
 [Java 修饰符 | 菜鸟教程 (runoob.com)](https://www.runoob.com/java/java-modifier-types.html)
 
+#### 7.基础语法问题：
 
+（1）.面向对象的三个基本特征及其含义？
 
+（2）.访问修饰符public，private，protected，以及不写（default）时
+的区别？
 
+（3）.下面所示代码块能够正常编译执行的是哪个，不能执行的是什么原因？
 
+```Java
+ // 
+代码块
+1  
+short s1 = 1; s1 = s1 + 1; 
+// 
+代码块
+2  
+short s1 = 1; s1 += 1;
+```
 
+（4）.下面代码块输出结果
 
+```Java
+public static void main(String[] args) {
+    Integer a = 128, b = 128, c = 127, d = 127;
+    System.out.println(a == b);
+    System.out.println(c == d);
+ }
+```
 
+（5）.⽤最有效率的⽅法计算2乘以8？
 
+（6）.&和&&的区别？
 
+（7）.String是Java基本数据类型吗？String类可以继承吗？
 
+（8）.String和StringBuilder、StringBuffer的区别？
 
+（9）.Strings=newString("xyz")创建了⼏个字符串对象？
 
+（10）.Strings="xyz"和Strings=newString("xyz")区别？
 
+（11）.==和equals的区别是什么？
 
+后面四个可以暂时看看。
 
+尝试：
 
+​	1.如果薪资大于5000 ，参与的项目数大于3个，则加薪1500，否则加薪1000 如果薪资小于5000，迟到次数小于5次，加薪800，否则加薪500。
 
+​	2.把大写字母，转成对应的小写字母，把小写字母转成对应的大写字母。
+
+Java分支结构与程序的输入输出。
 
 
 
