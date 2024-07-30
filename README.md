@@ -1,5 +1,9 @@
 # javaSE-Springcloud
-总结javaSE-Springcloud各个阶段知识点及对应demo。（整理一下自己学习Java时的心路历程，如果能够重来，我是否还会走上这条路？）
+总结javaSE-Springcloud各个阶段知识点及对应demo。
+
+（整理一下自己学习Java时的心路历程，如果能够重来，我是否还会走上这条路？）
+
+（Java实践课上，老师对我进行过一番批评：纸上得来终觉浅，绝知此事要躬行，不要想着看明白再写代码，先写出来，看报错，错了就改记住这个错误。重要的是先写，写出来才是最重要的。）
 
 （如果你是大一大二学生，看到此文档可以用作课程阶段学习，如果你大三大四了，就别学了，Java就是个坑。火速去学go，python，云原生。ps：2024.7.29）
 
@@ -242,7 +246,9 @@ public class Main {
 }
 ```
 
-#### 5.Java类与程序结构
+#### 5.Java类与对象
+
+[什么是类和对象？看完这篇就知道-CSDN博客](https://blog.csdn.net/weixin_57011679/article/details/124511149)
 
 java程序的结构：外层class   内层main方法
 
@@ -314,7 +320,256 @@ public static void main(String[] args) {
 
 ​	2.把大写字母，转成对应的小写字母，把小写字母转成对应的大写字母。
 
-Java分支结构与程序的输入输出。
+### Java程序结构
+
+#### 1.程序结构：
+
+程序分为三种结构：
+
+​	1.顺序结构：按照编码时的编写顺序一步一步进行编译、解释、执行。
+
+​	2.分支、选择结构：根据定义的条件，选择性的进入分支中，执行分支中的代码。
+
+​	3.循环结构：根据给定的条件，不断重复执行代码，直到不满足条件为止。
+
+#### 2.表达式
+
+表达式是，常量或变量与运算符组成的一个式子。在表达式中，运算符指示应对操作数进行什么样的运算。运算符包括+、-、\*、/和new；操作数包括文本、字段、局部变量和表达式。编写表达式时要注意运算符的优先级。
+
+例如：
+
+```java
+int num = -10;//定义一个变量，并进行初始化赋值
+String result = (num > 0) ? "正": "负";//定义一个result接收三目运算结果
+System.out.println(result);//输出结果
+```
+
+在上述代码块中，前两行都可看作表达式。
+
+#### 3.控制台输出与输入
+
+输出
+
+在以上内容中，我们反复提起
+
+```java
+System.out.println();
+```
+
+这个就是表示控制台输出的语句。当我们编码过后，想要看到编码结果，就需要使用此段代码，将结果可视化。
+
+输入
+
+变量之所以为变量，可不会从我们编码时直接赋值来体现。我们可以从键盘输入数据，将数据动态赋值给变量。
+
+#### 4.类的导入
+
+Java中提供了Scanner工具类来进行从键盘获取数据的操作。但是我们编码时无法直接使用，就好比我要拆电脑，我需要一个工具去拆解电脑，我需要先把工具拿到手里，才能使用。这就是类的导入
+
+导入类的方法：
+
+```java
+import java.util.Scanner;//所有其他的类都是用import进行导入
+```
+
+导入后使用：
+
+```java
+Scanner input=new Scanner(System.in);//input是自己定义的变量名
+```
+
+例：
+
+```java
+ import java.util.Scanner; //从类库中导入Scanner
+ public class Demo1 {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        //接收控制台的输入
+        
+        //声明Scanne变量
+        Scanner input = new Scanner(System.in);
+        
+        //就可以使用变量input来接收用户的输入
+        //注意：不同的类型的数据，Scanner的接收方式是不同的
+        //接收用户的注册信息
+        System.out.println("请按提示输入注册信息：");
+        System.out.println("请输入年龄：");
+        //接收int 
+        int age = input.nextInt();
+        //接收float
+        System.out.println("请输入薪资：");
+        float salary = input.nextFloat();
+        System.out.println("你是否毕业？true/false");
+        //接收boolean
+        boolean isPass = input.nextBoolean();
+        //接收String
+        //next() 从头开始接收、读取字符串，如果遇到空格等特殊字符，停止接收
+        System.out.println("请输入你的邮箱：");
+        String email = input.next();
+        
+        //接收
+        //nextLine() 从头接收整行输入，包括这特殊字符
+        //System.out.println("请输入你的住址：");
+        //String address  = input.nextLine();
+        
+        //接收字符类型
+        //没有直接接收char类型的函数nextChar()
+        //先以字符串方式接收，再从字符串里获取对应位置的字符，从0开始
+        System.out.println("请输入你的性别：F/M");
+        char gender = input.next().charAt(2);
+        
+        System.out.println("你的注册信息如下：年龄："+age+"\t薪资："+salary+"\t是否毕
+业？"+isPass);
+        System.out.println("邮箱："+email);
+        //System.out.println("住址："+address);
+        System.out.println("性别："+gender);
+    }
+ }
+```
+
+需要注意的是，当我们使用int定义变量接收input输入的变量时，我们必须键入整数。
+
+否则就会报异常：java.util.InputMismatchException //此异常为输入数据类型与定义的数据类型不匹配导致。
+
+#### 5.if选择结构
+
+##### 1.if初步使用
+
+if（判断条件，返回boolean结果）{
+
+​	//当结果为true时执行的结构体
+
+}else{
+
+​	//当结果为false时执行的结构体
+
+}
+
+例如：
+
+```java
+import java.util.Scanner;
+
+public class ifDemo{
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);//变量声明，创建Scanner对象
+        System.out.println("你好，我将为你分析你的成绩");
+        System.out.println("请输入你的成绩：");//提示语
+        int score = input.nextInt();//接收数据
+
+        if (score >= 60) {
+            System.out.println("你不及格，准备补考吧你！");
+        }else{
+            System.out.println("你及格了，好好玩去吧！");
+        }
+        System.out.println("下次将会推出喝水教学，灌注我，我将满足你");
+    }
+}
+```
+
+//标题之所以是if选择结构，是因为单个if判断也能正常使用，无需加上else。
+
+//同样的，
+
+##### 2.if-else多层叠加
+
+例如：
+
+```Java
+import java.util.Scanner;
+
+public class ifDemo2{
+    public static void main(String[] args) {
+        //多重if选择结构
+
+        //1、声明Scanner
+        Scanner input = new Scanner(System.in);
+
+        //2、接收用户输入的时间
+        System.out.println("请输入你几个小时没喝水了：");
+        int num = input.nextInt();
+
+        //3、使用多重if选择结构进行判断
+
+        //声明变量存放判定的结果
+        String result="";
+        //91~100这个范围
+        if(num >=48 && num <=72){
+            result="大口喝水";
+        }else if(num >=24 && num <=48){
+            result="中口喝水";
+        }else if(num >=12 && num <=24){
+            result="小口喝水";
+        }else if(num >=0 && num <=12){
+            result="想喝就喝，不想喝就不喝。";
+        }else{
+            result="......你渴死了，不用喝了。";
+        }
+        System.out.println("你应该"+result);;
+    }
+}
+```
+
+##### 3.if嵌套
+
+在if的语句块中，又使用了if语句 在满足一个条件后，在里面继续判断是否满足某个条件
+
+if(){
+
+​	if(){
+
+
+
+​	}
+
+}
+
+```java
+ import java.util.Scanner;
+ public class ifDemo3 {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        //嵌套if选择结构
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("请输入你的性别：F/M");
+        char gender = input.next().charAt(0);
+        //先判断性别：
+        if(gender == 'F'){
+            //输入婚否
+            System.out.println("你是否成婚？Y/N");
+            char is = input.next().charAt(0);
+            //判断如果结婚，3月份有半天的假期
+            if(is == 'Y'){
+                System.out.println("即将到来的三月份，您有半天的假期！");
+            }else{
+                System.out.println("暂时还不具备休女神假期的资格！");
+            }
+        }else{
+            System.out.println("您是男士，这个假与你无关！");
+        }
+    }
+ }
+```
+
+If 嵌套if  案例完成            
+
+2、输入你的体重，单位是KG,  身高，单位是M      计算BMI指数                 
+
+输出：根据BMI指数输出：肥胖、适中、较瘦等               
+
+bmi = 体重 /  身高的平方               
+
+< 18.5        过轻              
+
+18.5~23.9  正常              
+
+ 24~27.9    超重                 
+
+> 28        肥胖
+
+
 
 
 
