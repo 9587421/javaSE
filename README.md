@@ -569,23 +569,232 @@ bmi = 体重 /  身高的平方
 
 28        肥胖
 
+#### 6.switch选择结构
 
+相当于对if结构的简化
 
+switch(表达式/变量/值){
 
+​	case 值1：
 
+​		语句；
 
+​		break；
 
+​	case 值2：
 
+​		语句；
 
+​		break；
 
+​	case 值3：
 
+​		语句；
 
+​		break；
 
+​	default：
 
+​		语句
 
+​		break；
 
+}	
 
+1、先执行switch里的表达式。
 
+2、然后逐个判断 表达式或变量或值，与哪个case后面的值相等。
 
+3、和哪个 case后面的值相等，那么就执行这个case后面的语句块。
 
+4、一旦执行了某个语句块后，那么其余的case 将不会被判断执行。
 
+5、default表示在所有case分支之外的其他分支所执行的语句。
+
+6、case值不能重复。
+
+7、switch后的表达式、变量数据类型必须是byte，short，int 、char、String、Enum。
+
+8、break表示跳出结构体，并非必须加上，如果没有添加break，则会在执行首个符合条件的case语句后，继续执行下一个case语句，无论是否符合条件。
+
+9、进行区间判断时可以使用if语句，进行等值判断时使用switch语句。
+
+例子：
+
+```Java
+ import java.util.Scanner;
+ public class switchDemo {
+    public static void main(String[] args) {
+  Scanner input = new Scanner(System.in);
+       System.out.print("请输入该学生成绩：");
+       int score = input.nextInt();
+       if(score <0 || score >100){//输入的整数范围应为0-100
+           System.out.println("输入的成绩有误");
+           return;
+       }
+       switch(grade/10){
+           case 10:
+           case 9:
+               System.out.println("该学生成绩优秀");
+               break;
+           case 8:
+               System.out.println("该学生成绩良好");
+               break;
+           case 7:
+               System.out.println("该学生成绩中等");
+               break;
+           case 6:
+               System.out.println("该学生成绩基本合格");
+               break;
+           default:
+               System.out.println("该学生成绩不合格");
+
+        }
+    }
+ }
+```
+
+#### 7、循环结构
+
+重复循环执行的结构叫做循环结构。
+
+##### 1.while循环
+
+​	while(循环条件){
+
+​		//循环体
+
+​	}
+
+while循环特点：  
+
+1、先判断循环条件，然后才执行循环体，有可能一次循环体都未被执行 
+
+2、适用于已知循环次数的情况
+
+在while循环中，先执行循环条件，循环条件的结果必须时boolean值
+
+当boolean值为true时执行循环体，结果为false，结束循环。
+
+当一轮运行结束后，会重新执行循环条件，若boolean值依旧为true，就会进行第二轮运行。
+
+例子：输出十遍我是LOL高手
+
+```java
+
+public class whileDemo {
+    public static void main(String[] args) {
+        int num=1;
+        while (num<=10) {//设置循环条件若num这个循环变量小于等于10，就继续执行程序
+            System.out.println("我是LOL糕手");//主要的输出内容
+            num++;//每输出一遍内容，给num值加1.当num值到11后，不满足循环条件，循环结束。
+        }
+    }
+}
+
+```
+
+##### 2.局部变量
+
+局部变量：
+
+声明在方法内部，或方法中的语句块{}中的变量。
+
+局部变量的有效范围：从声明时刻开始，到所在语句块的}结束，超出范围无法使用，报错。 
+
+局部变量使用注意点： 
+
+1、局部变量一定赋值之后，才能使用---输出  计算 ，这个赋值过程被称作初始化。
+
+2、同一个作用域内，不能出现同名的变量
+
+```java
+public class Demo {
+     public static void main(String[] args) {
+         // TODO Auto-generated method stub
+             int num = 100;
+             int num1;
+             System.out.println("num="+num);
+             //因为num1 没有赋值，因此不能被使用
+             System.out.println("num1="+num1);
+             if(num==100){
+             int num=120;
+             System.out.println("");
+         }
+    }
+ }
+```
+
+异常判断：分析以下程序中出现的问题。
+
+```java
+ public class Demo {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        //1~100之间数字之和
+        //声明变量初始值为1
+        //循环变量通常使用i  j   k   m   n
+        //循环条件：循环变量i从1开始，累加，如果小于等于100  执行循环体
+        int i =1;
+        while(i<=100){
+            //i  就是要累加的值
+            int sum=0;
+            sum = sum+i;
+            //切记循环变量的累加
+            i++;
+        }
+        //sum声明在while里，是局部变量，在while的外面无法使用，超出作用域
+        System.out.println("1~100之间的累加和："+sum);
+    }
+ 
+```
+
+【注意】使用断点跟踪的方式，来查看循环的执行过程 
+
+1、在代码前面的“竖条”上双击，设置断点     当运行程序后，到断点处，程序就会中止 
+
+2、需要单击 箭头按钮，逐步执行 
+
+3、在执行每一行的过程中，观察：变量值的变化，执行的过程、输出结果 
+
+【说明】设置断点的程序，运行时，单击debug虫子按钮  或 右键单击  debug as --->java applicaiton 
+
+F6：逐步、逐行代码执行
+
+小练习：
+
+1.正向打印26个小写字母           
+
+2.反向打印26个小写字母
+
+3.输出100以内的偶数
+
+4.输出100以内的奇数
+
+##### 3.do-while循环
+
+do{  
+
+//循环体 
+
+}while(循环条件);
+
+先执行，后判断是否继续执行。
+
+练习：
+
+1.猜拳游戏： 默认有5000金币 和电脑猜大、猜小 
+
+押金币：至少50个 或50的倍数 
+
+电脑询问：是否加倍 如果人赢了，累加对应赢取的金币，输了就扣除对应的金币 
+
+玩完一局后，询问是否继续，如果继续，重复 
+
+大小的规则：电脑产生3个骰子 的点数 累加 如果累加和大于9 
+
+2.do-while实现登录
+
+3.登陆后，查看菜单选项，是否继续执行。
+
+##### 4.for循环
