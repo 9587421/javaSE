@@ -798,3 +798,252 @@ do{
 3.登陆后，查看菜单选项，是否继续执行。
 
 ##### 4.for循环
+
+for（表达式；表达式；表达式）{
+
+​	//循环体
+
+}
+
+表达式1：最先执行，只被执行一次，用于循环变量的初始化---循环变量声明、赋值 
+
+表达式2：计算结果必须是布尔值 true  false                  用于循环条件的判断，为true---执行循环体  否则不执行 
+
+表达式3：用于循环变量的迭代、改变
+
+练习1：
+
+计算1-100的奇数之和
+
+```java
+public class Demo {
+    public static void main(String[] args) {
+        int sum = 0;
+        for (int i = 1; i <= 100; i++) {
+            if (i % 2 != 0) {
+                sum += i;
+            }
+        }
+        System.out.println("1到100之间所有奇数的和为：" + sum);
+    }
+}
+
+```
+
+练习2：
+
+输入学生个数，录入成绩，计算平均分
+
+​	//在循环进行过程中，当符合某种条件后，终止、中止循环的执行，称为循环的控制 
+
+​	//用于 while   do-while   for 都可以 
+
+​	//break：跳出、结束所在的循环，整个所在循环结束 
+
+​	//continue：结束本次循环，进入下一次循环
+
+如果某个成绩为负数，则结束录入 在循环中，使用break continue
+
+```java
+import java.util.Scanner; // 导入Scanner类，用于读取用户输入
+
+public class StudentScores {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // 创建Scanner对象
+        
+        System.out.print("请输入学生人数："); // 提示用户输入学生人数
+        int numberOfStudents = scanner.nextInt(); // 读取并存储学生人数
+        
+        double sum = 0; // 初始化成绩总和变量
+        int validScoresCount = 0; // 初始化有效成绩计数器
+        
+        for (int i = 1; i <= numberOfStudents; i++) { // 循环遍历每个学生
+            System.out.print("请输入第" + i + "位学生的成绩："); // 提示用户输入当前学生的成绩
+            double score = scanner.nextDouble(); // 读取并存储当前学生的成绩
+            
+            if (score < 0) { // 如果成绩为负数
+                System.out.println("输入的成绩为负数，录入结束。"); // 打印提示信息
+                break; // 结束循环
+            }
+            
+            if (score > 100) { // 如果成绩无效（大于100）
+                System.out.println("成绩无效，请输入0到100之间的成绩。"); // 打印提示信息
+                continue; // 跳过当前循环迭代
+            }
+            
+            sum += score; // 将有效成绩累加到总和中
+            validScoresCount++; // 有效成绩计数器加1
+        }
+        
+        if (validScoresCount > 0) { // 如果有有效成绩
+            double average = sum / validScoresCount; // 计算平均分数
+            System.out.println("平均分数为：" + average); // 打印平均分数
+        } else { // 如果没有有效成绩
+            System.out.println("没有有效的成绩输入。"); // 打印提示信息
+        }
+        
+        scanner.close(); // 关闭Scanner对象
+    }
+}
+
+```
+
+
+
+###### for循环的嵌套
+
+练习1
+
+打印一个3行 每行10颗星  
+
+分析：需要使用二重循环    
+
+外层循环：控制行数    
+
+内层循环：控制 每行的星的打印
+
+```java
+public class StarPattern {
+    public static void main(String[] args) {
+        for (int i = 1; i <= 3; i++) { // 外层循环：控制行数，共3行
+            for (int j = 1; j <= 10; j++) { // 内层循环：控制每行的星的打印，共10颗星
+                System.out.print("*"); // 打印星号，不换行
+            }
+            System.out.println(); // 每行打印完后换行
+        }
+    }
+}
+
+```
+
+练习2
+
+有多个班级，每个班级有多个学生，输入班级数，
+
+每个班级学生的数量， 录入成绩，计算每个班级的平均分
+
+```java
+import java.util.Scanner; // 导入Scanner类，用于读取用户输入
+
+public class ClassAverage {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // 创建Scanner对象
+        
+        System.out.print("请输入班级数："); // 提示用户输入班级数
+        int numberOfClasses = scanner.nextInt(); // 读取并存储班级数
+        
+        for (int i = 1; i <= numberOfClasses; i++) { // 外层循环：遍历每个班级
+            System.out.print("请输入第" + i + "个班级的学生人数："); // 提示用户输入当前班级的学生人数
+            int numberOfStudents = scanner.nextInt(); // 读取并存储当前班级的学生人数
+            
+            double sum = 0; // 初始化成绩总和变量
+            int validScoresCount = 0; // 初始化有效成绩计数器
+            
+            for (int j = 1; j <= numberOfStudents; j++) { // 内层循环：遍历每个学生
+                System.out.print("请输入第" + j + "位学生的成绩："); // 提示用户输入当前学生的成绩
+                double score = scanner.nextDouble(); // 读取并存储当前学生的成绩
+                
+                if (score < 0) { // 如果成绩为负数
+                    System.out.println("输入的成绩为负数，录入结束。"); // 打印提示信息
+                    break; // 结束当前班级的成绩录入
+                }
+                
+                if (score > 100) { // 如果成绩无效（大于100）
+                    System.out.println("成绩无效，请输入0到100之间的成绩。"); // 打印提示信息
+                    continue; // 跳过当前循环迭代
+                }
+                
+                sum += score; // 将有效成绩累加到总和中
+                validScoresCount++; // 有效成绩计数器加1
+            }
+            
+            if (validScoresCount > 0) { // 如果有有效成绩
+                double average = sum / validScoresCount; // 计算平均分数
+                System.out.println("第" + i + "个班级的平均分数为：" + average); // 打印平均分数
+            } else { // 如果没有有效成绩
+                System.out.println("第" + i + "个班级没有有效的成绩输入。"); // 打印提示信息
+            }
+        }
+        
+        scanner.close(); // 关闭Scanner对象
+    }
+}
+
+```
+
+练习3
+
+打印直角三角形和等腰三角形。
+
+练习4
+
+打印倒过来的直角三角形，等腰三角形。
+
+练习5
+
+输出1-100之间的素数
+
+练习6
+
+使用一侧循环打印乘法口诀表
+
+练习7
+
+打印斐波那契数列
+
+练习8
+
+ 控制台输入一个5位数，倒置后输出   例如：12345  -->54321      
+
+练习9
+
+控制台输入两个数：计算打印出这两个数的最大公约、最小公倍数      
+
+练习10
+
+使用双重循环：先登录---登录错误3次后，不允许登录                                 
+
+在登录成功后，循环输出菜单  
+
+练习11
+
+ 打印菱形     
+
+练习12
+
+打字游戏： 
+
+1、闯关升级 
+
+2、每个界别难易程度不同        
+
+​	1、随机打印5个字符，打印5次  显示5秒                             
+
+​	2.	           10              打印3次 限时4秒
+
+```java
+ public class Demo {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        int sum=0;
+        //在循环之前获取当前时间  从1970年1月1日0时0分0秒，到目前过了多少毫秒   
+        //1000毫秒 是1秒
+        long startTime=System.currentTimeMillis();
+        for(int i=1; i<=100; i++){
+            try {
+                Thread.sleep(10);
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            sum+=i;
+        }
+        long endTime=System.currentTimeMillis();
+        //计算用时：
+}
+ }
+ long useTime=endTime - startTime;
+ System.out.println("计算用时："+useTi
+```
+
+### Java中的方法
